@@ -1,0 +1,226 @@
+/* Main stylesheet *//* ==========================
+   Global Styles
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    background:#ffffff;
+    color:#333;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+/* ==========================
+   Navigation
+========================== */
+
+.navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 8%;
+
+    background:#1B5E20;
+    color:white;
+
+    position:sticky;
+    top:0;
+
+}
+
+.logo{
+
+    color:white;
+    font-size:1.5rem;
+    font-weight:bold;
+
+}
+
+.nav-links{
+
+    display:flex;
+    gap:30px;
+
+}
+
+.nav-links a{
+
+    color:white;
+    transition:.3s;
+
+}
+
+.nav-links a:hover{
+
+    color:#C8E6C9;
+
+}
+
+.donate-btn{
+
+    background:#4CAF50;
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:5px;
+
+}
+
+.hamburger{
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+}
+
+.hero{
+    padding:80px 8%;
+    background:linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+    min-height:70vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h2,
+.about-preview h2,
+.featured-projects h2,
+.news-preview h2,
+.contact-preview h2{
+    margin-bottom:16px;
+    color:#1B5E20;
+}
+
+.hero p,
+.about-preview p,
+.featured-projects p,
+.news-preview p,
+.contact-preview p{
+    margin-bottom:20px;
+    color:#444;
+}
+
+.btn{
+    display:inline-block;
+    background:#4CAF50;
+    color:white;
+    padding:10px 18px;
+    border-radius:5px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#388E3C;
+}
+
+.about-preview,
+.news-preview,
+.contact-preview{
+    padding:60px 8%;
+}
+
+.featured-projects{
+    padding:60px 8%;
+    background:#F8FFF8;
+}
+
+.project-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:24px;
+    margin:24px 0 30px;
+}
+
+.project-card{
+    background:white;
+    padding:24px;
+    border:1px solid #DCE8DD;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+/* ==========================
+   Footer
+========================== */
+
+footer{
+
+    background:#1B5E20;
+    color:white;
+
+    margin-top:80px;
+
+}
+
+.footer-container{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:40px;
+
+    padding:60px 8%;
+
+}
+
+.footer-container h4{
+
+    margin-bottom:15px;
+
+}
+
+.footer-container a{
+
+    color:white;
+
+}
+
+.footer-container li{
+
+    margin:10px 0;
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    padding:20px;
+
+    border-top:1px solid rgba(255,255,255,.2);
+
+}
