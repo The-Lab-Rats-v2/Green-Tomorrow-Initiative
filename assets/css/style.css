@@ -112,6 +112,11 @@ header {
     color: var(--forest);
 }
 
+.nav-links a.active {
+    background: var(--forest);
+    color: #fff;
+}
+
 .donate-btn,
 .btn {
     display: inline-flex;
