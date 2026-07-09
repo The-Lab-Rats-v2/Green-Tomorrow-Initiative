@@ -297,6 +297,133 @@ h3 {
     height: 420px;
 }
 
+/* ---------- Page hero banner (photo + overlay) ---------- */
+.page-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+.page-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+.page-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(9,44,34,0.35), rgba(9,44,34,0.65));
+}
+.page-hero-content {
+    max-width: 720px;
+    padding: 40px 24px;
+    color: #fff;
+}
+.page-hero-eyebrow {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--leaf-light);
+    border: 1px solid rgba(143, 214, 148, 0.5);
+    border-radius: 999px;
+    padding: 6px 16px;
+    margin-bottom: 18px;
+}
+.page-hero-content h1 {
+    color: #fff;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    margin-bottom: 14px;
+}
+.page-hero-content p {
+    color: rgba(255,255,255,0.9);
+}
+
+/* ---------- About: photo badge ---------- */
+.about-media {
+    position: relative;
+}
+.about-badge {
+    position: absolute;
+    right: -1rem;
+    bottom: 1.4rem;
+    background: var(--leaf);
+    color: #fff;
+    border-radius: 12px;
+    padding: 0.9rem 1.2rem;
+    box-shadow: var(--shadow);
+    text-align: center;
+    line-height: 1.1;
+}
+.about-badge-num {
+    display: block;
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+.about-badge-label {
+    display: block;
+    font-size: 0.78rem;
+    opacity: 0.92;
+}
+
+/* ---------- About: bullet points ---------- */
+.about-list{
+    grid-column: 1;
+    width: 100%;
+    align-self: start;
+}
+.about-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-weight: 650;
+    color: var(--forest);
+}
+.about-list .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--leaf);
+    box-shadow: 0 0 0 4px rgba(47, 143, 70, 0.18);
+    flex: 0 0 auto;
+}
+
+/* ---------- Mission & Vision: aligned cards, own row (not affecting Programmes' project-container) ---------- */
+.mv-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 34px auto;
+}
+.mv-card {
+    display: flex;
+    flex-direction: column;
+}
+.mv-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--leaf);
+    background: var(--mint);
+    margin-bottom: 1.2rem;
+}
+.mv-icon-vision {
+    color: #b45309;
+    background: #fef3c7;
+}
+
 .featured-projects {
     max-width: none;
     background: var(--mint);
