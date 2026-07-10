@@ -5,70 +5,209 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Green Tomorrow Initiative</title>
+
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <script defer src="assets/js/navigation.js"></script>
-    <script defer src="assets/js/script.js"></script>
 </head>
 
 <body>
+
     <header>
         <nav class="navbar">
+
             <a href="index.html" class="logo">
                 <span class="logo-mark" aria-hidden="true"></span>
                 Green Tomorrow
             </a>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="programmes.html">Programmes</a></li>
                 <li><a href="news.html">News</a></li>
-                <li><a class="active" href="contact.html">Contact</a></li>
+                <li><a href="contact.html" aria-current="page">Contact</a></li>
             </ul>
 
-            <a href="contact.html" class="donate-btn">Donate</a>
-            <button class="hamburger" aria-label="Toggle navigation">&#9776;</button>
+            <a href="#" class="donate-btn">Donate</a>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+
         </nav>
     </header>
-
+<section class="page-hero">
+            <img class="page-hero-bg" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&h=400&fit=crop"  alt="Green Tomorrow Initiative Team"
+                loading="lazy"
+            >
+            <div class="page-hero-content">               
+                <h1>Contact Us</h1>
+                <p>We'd love to hear from you.<br>Send us a message and we'll get back
+                to you as soon as possible.</p>
+            </div>
+        </section>
     <main class="page-shell">
-        <h1>Contact</h1>
+
+            <!-- Success Message Container -->
+            <div id="successMessage" class="success-message" style="display:none;">
+                 Your message has been sent successfully!
+            </div>
+
+            <div class="form-container">
+
+                <form id="contactForm" novalidate>
+
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter your name"
+                            required
+                            aria-describedby="nameError"
+                            autocomplete="name"
+                        >
+                        <span id="nameError" class="error" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                            required
+                            aria-describedby="emailError"
+                            autocomplete="email"
+                        >
+                        <span id="emailError" class="error" role="alert"></span>
+                    </div>
+
+                    <div class="form-group">
+    <label for="message">Message</label>
+
+    <textarea
+        id="message"
+        name="message"
+        rows="6"
+        placeholder="Write your message here"
+        required
+        aria-describedby="messageError"
+    ></textarea>
+
+    <span id="messageError" class="error" role="alert"></span>
+</div>
+
+                    <button type="submit" id="submitBtn">
+                        Submit
+                    </button>
+
+                </form>
+
+            </div>
+
+        <!-- Google Maps Placeholder -->
+
+        <section class="map-section">
+
+            <h2>Find Us</h2>
+
+            <iframe
+                title="Green Tomorrow Initiative Location"
+                src="https://www.google.com/maps?q=Cape%20Town,%20South%20Africa&output=embed"
+                width="100%"
+                height="350"
+                style="border:0;"
+                loading="lazy"
+                allowfullscreen
+            >
+            </iframe>
+
+        </section>
+
+        <!-- Social Media -->
+
+        <section class="social-section">
+
+           <div class="social-links">
+
+<div class="social-links">
+
+    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+</div>
+
+        </section>
+
     </main>
 
     <footer>
+
         <div class="footer-container">
+
             <div class="footer-about">
+
                 <h3>Green Tomorrow Initiative</h3>
+
                 <p>
                     Building greener communities through sustainability,
                     education and environmental action.
                 </p>
+
             </div>
 
             <div>
+
                 <h4>Quick Links</h4>
+
                 <ul>
+
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="programmes.html">Programmes</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
+
                 </ul>
+
             </div>
 
             <div>
+
                 <h4>Contact</h4>
+
                 <p>info@greentomorrow.org</p>
                 <p>Cape Town, South Africa</p>
+
             </div>
+
         </div>
+      
 
         <div class="copyright">
-            <p>&copy; 2026 Green Tomorrow Initiative. All Rights Reserved.</p>
+
+            <p>
+                &copy; 2026 Green Tomorrow Initiative. All Rights Reserved.
+            </p>
+
         </div>
+
     </footer>
+
+    <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>
