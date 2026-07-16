@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Challenge | Green Tomorrow Initiative</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <script defer src="assets/js/navigation.js"></script>
+    <script defer src="assets/js/script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                Green Tomorrow
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programmes.html">Programmes</a></li>
+                <li><a href="competition.html">Green Challenge</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <a href="contact.html" class="donate-btn">Join Us</a>
+
+            <button class="hamburger" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Page banner -->
+      <section class="page-hero">
+    <video class="page-hero-bg page-hero-video" autoplay muted loop playsinline poster="assets/images/unsplash.about2.jpg">
+        <source src="assets/videos/challenge-highlight.mp4" type="video/mp4">
+    </video>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+        <span class="page-hero-eyebrow">Inter-University Competition</span>
+        <h1>The Green Challenge</h1>
+        <p>Pitch your sustainability idea. Represent your university. Win recognition for real environmental impact.</p>
+    </div>
+</section>
+
+        <!-- About the competition -->
+        <!-- Entry form -->
+         
+<section class="about-preview" id="entry-form">
+    <div class="section-copy" style="max-width: 100%; grid-column: 1 / -1;">
+        <span class="eyebrow">Enter the Challenge</span>
+        <h2>Submit your team entry</h2>
+        <p>Fill in your team and project details below. All fields marked * are required.</p>
+
+        <form class="entry-form" id="competitionForm">
+
+            <div class="form-group">
+                <label for="teamName">Team Name *</label>
+                <input type="text" id="teamName" name="teamName" required placeholder="e.g. EcoInnovators">
+            </div>
+
+            <div class="form-group">
+                <label for="university">University *</label>
+                <input type="text" id="university" name="university" required placeholder="e.g. Cape Peninsula University of Technology">
+            </div>
+
+            <div class="form-group">
+                <label for="projectTitle">Project Title *</label>
+                <input type="text" id="projectTitle" name="projectTitle" required placeholder="e.g. Campus Solar Recycling Hub">
+            </div>
+
+            <div class="form-group">
+                <label for="projectSummary">Project Summary *</label>
+                <textarea id="projectSummary" name="projectSummary" required placeholder="Briefly describe your project idea, the problem it solves, and its expected impact."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="teamLeadName">Team Lead Name *</label>
+                <input type="text" id="teamLeadName" name="teamLeadName" required placeholder="Full name">
+            </div>
+
+            <div class="form-group">
+                <label for="teamLeadEmail">Team Lead Email *</label>
+                <input type="email" id="teamLeadEmail" name="teamLeadEmail" required placeholder="you@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="teamLeadStudentNumber">Team Lead Student Number *</label>
+                <input type="text" id="teamLeadStudentNumber" name="teamLeadStudentNumber" required placeholder="e.g. 221297820">
+            </div>
+
+            <div class="form-group">
+                <label for="teamMembers">Other Team Members *</label>
+                <textarea id="teamMembers" name="teamMembers" required placeholder="List each member's full name and student number, one per line."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="teamSize">Team Size *</label>
+                <select id="teamSize" name="teamSize" required>
+                    <option value="">Select team size</option>
+                    <option value="2">2 members</option>
+                    <option value="3">3 members</option>
+                    <option value="4">4 members</option>
+                    <option value="5">5 members</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="proposalFile">Proposal Document (optional)</label>
+                <input type="file" id="proposalFile" name="proposalFile" accept=".pdf,.doc,.docx">
+            </div>
+
+            <button type="submit" class="btn">Submit Entry</button>
+
+            <div class="form-status" id="formStatus"></div>
+
+        </form>
+    </div>
+</section>
+
+        <!-- Key dates -->
+        <section class="featured-projects">
+            <div class="section-heading">
+                <span class="eyebrow">Key Dates</span>
+                <h2>How it works</h2>
+                <p>Four simple stages from entry to final pitch.</p>
+            </div>
+
+            <div class="project-container">
+
+                <div class="project-card">
+                    <div class="project-card-body">
+                        <h3>1. Team Entry</h3>
+                        <p>Register your team and submit your project idea using the form below.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-body">
+                        <h3>2. Shortlisting</h3>
+                        <p>Our panel reviews all entries and shortlists teams to advance.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-body">
+                        <h3>3. Final Pitch</h3>
+                        <p>Shortlisted teams present live to judges and fellow participants.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Entry form -->
+        <section class="about-preview" id="entry-form">
+            <div class="section-copy" style="max-width: 100%; grid-column: 1 / -1;">
+                <span class="eyebrow">Enter the Challenge</span>
+                <h2>Submit your team entry</h2>
+                <p>Fill in your team and project details below. All fields marked * are required.</p>
+
+                <form class="entry-form" id="competitionForm">
+
+                    <div class="form-group">
+                        <label for="teamName">Team Name *</label>
+                        <input type="text" id="teamName" name="teamName" required placeholder="e.g. EcoInnovators">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="university">University *</label>
+                        <input type="text" id="university" name="university" required placeholder="e.g. Cape Peninsula University of Technology">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectTitle">Project Title *</label>
+                        <input type="text" id="projectTitle" name="projectTitle" required placeholder="e.g. Campus Solar Recycling Hub">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectSummary">Project Summary *</label>
+                        <textarea id="projectSummary" name="projectSummary" required placeholder="Briefly describe your project idea, the problem it solves, and its expected impact."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamLeadName">Team Lead Name *</label>
+                        <input type="text" id="teamLeadName" name="teamLeadName" required placeholder="Full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamLeadEmail">Team Lead Email *</label>
+                        <input type="email" id="teamLeadEmail" name="teamLeadEmail" required placeholder="you@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamLeadStudentNumber">Team Lead Student Number *</label>
+                        <input type="text" id="teamLeadStudentNumber" name="teamLeadStudentNumber" required placeholder="e.g. 221297820">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamMembers">Other Team Members *</label>
+                        <textarea id="teamMembers" name="teamMembers" required placeholder="List each member's full name and student number, one per line."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="teamSize">Team Size *</label>
+                        <select id="teamSize" name="teamSize" required>
+                            <option value="">Select team size</option>
+                            <option value="2">2 members</option>
+                            <option value="3">3 members</option>
+                            <option value="4">4 members</option>
+                            <option value="5">5 members</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="proposalFile">Proposal Document (optional)</label>
+                        <input type="file" id="proposalFile" name="proposalFile" accept=".pdf,.doc,.docx">
+                    </div>
+
+                    <button type="submit" class="btn">Submit Entry</button>
+
+                    <div class="form-status" id="formStatus"></div>
+
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+                <h3>Green Tomorrow Initiative</h3>
+                <p>
+                    Building greener communities through sustainability,
+                    education and environmental action.
+                </p>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="competition.html">Green Challenge</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>info@greentomorrow.org</p>
+                <p>Cape Town, South Africa</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 Green Tomorrow Initiative. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Green Tomorrow Initiative</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <script defer src="assets/js/navigation.js"></script>
+    <script defer src="assets/js/script.js"></script>
+</head>
+
+<body>
+
+    <section class="auth-section auth-section-bg">
+        <img class="auth-bg-img" src="assets/images/unsplash.about2.jpg" alt="">
+        <div class="auth-bg-overlay"></div>
+
+        <div class="auth-card">
+
+            <div class="auth-brand">
+                <span class="auth-brand-mark">Green Tomorrow</span>
+                <h1 class="auth-panel-title">Member Registration</h1>
+            </div>
+
+            <form class="auth-form" id="registerForm">
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required minlength="8" placeholder="At least 8 characters">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8" placeholder="Re-enter your password">
+                </div>
+
+                <div class="form-group">
+                    <label for="referral">How did you hear about us?</label>
+                    <select id="referral" name="referral">
+                        <option value="">Select an option</option>
+                        <option value="social">Social Media</option>
+                        <option value="friend">Friend or Family</option>
+                        <option value="university">University / CPUT</option>
+                        <option value="event">A community event</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn auth-submit">Create Account</button>
+
+                <div class="form-status" id="registerStatus"></div>
+
+            </form>
+
+            <div class="auth-divider"></div>
+
+            <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
