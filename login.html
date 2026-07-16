@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Green Tomorrow Initiative</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <script defer src="assets/js/navigation.js"></script>
+    <script defer src="assets/js/script.js"></script>
+</head>
+
+<body>
+
+    <section class="auth-section auth-section-bg">
+        <img class="auth-bg-img" src="assets/images/unsplash.about2.jpg" alt="">
+        <div class="auth-bg-overlay"></div>
+
+        <div class="auth-card">
+
+            <div class="auth-brand">
+                <span class="auth-brand-mark">Green Tomorrow</span>
+                <h1 class="auth-panel-title">Member Login Panel</h1>
+            </div>
+
+            <form class="auth-form" id="loginForm">
+
+                <div class="form-group">
+                    <label for="loginEmail">Email / Username</label>
+                    <input type="text" id="loginEmail" name="email" required placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required placeholder="Your password">
+                </div>
+
+                <a href="#" class="auth-forgot">Forgot Password?</a>
+
+                <button type="submit" class="btn auth-submit">Sign in</button>
+
+                <div class="form-status" id="loginStatus"></div>
+
+            </form>
+
+            <div class="auth-divider"></div>
+
+            <p class="auth-switch">Not registered? <a href="register.html">Register now</a></p>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
