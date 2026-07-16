@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
 
     <script defer src="assets/js/navigation.js"></script>
-    <script defer src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/supabase.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/register-page.js"></script>
 </head>
 
 <body>
@@ -41,24 +43,14 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required minlength="8" placeholder="At least 8 characters">
+                    <input type="password" id="password" name="password" required minlength="8"
+                        placeholder="At least 8 characters">
                 </div>
 
                 <div class="form-group">
                     <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8" placeholder="Re-enter your password">
-                </div>
-
-                <div class="form-group">
-                    <label for="referral">How did you hear about us?</label>
-                    <select id="referral" name="referral">
-                        <option value="">Select an option</option>
-                        <option value="social">Social Media</option>
-                        <option value="friend">Friend or Family</option>
-                        <option value="university">University / CPUT</option>
-                        <option value="event">A community event</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required minlength="8"
+                        placeholder="Re-enter your password">
                 </div>
 
                 <button type="submit" class="btn auth-submit">Create Account</button>

@@ -1,13 +1,94 @@
+// ---------- Auth guards (runs before page loads) ----------
+(function() {
+    // Get the current page filename more reliably
+    let currentPage = '';
+    const pathname = window.location.pathname;
+    
+    if (pathname.includes('dashboard.html')) {
+        currentPage = 'dashboard.html';
+    } else if (pathname.includes('login.html')) {
+        currentPage = 'login.html';
+    } else if (pathname.includes('register.html')) {
+        currentPage = 'register.html';
+    }
+    // All other pages (index, about, programmes, competition, etc.) are public
+    
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    
+    // Redirect to login if trying to access dashboard without being logged in
+    if (currentPage === 'dashboard.html' && !isLoggedIn) {
+        window.location.href = 'login.html';
+        return;
+    }
+    
+    // Redirect to dashboard if already logged in and trying to access login/register
+    if ((currentPage === 'login.html' || currentPage === 'register.html') && isLoggedIn) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
+    
+    // Public pages preserve login state - no redirects here
+})();
+
+// ---------- Update navbar based on login state ----------
+document.addEventListener('DOMContentLoaded', () => {
+    const navbarAuth = document.querySelector('.navbar-auth');
+    if (!navbarAuth) return;
+    
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const currentUser = localStorage.getItem('currentUser');
+    
+    if (isLoggedIn && currentUser) {
+        // Show Dashboard and Logout for logged-in users
+        navbarAuth.innerHTML = `
+            <a href="dashboard.html" class="navbar-link">Dashboard</a>
+            <a href="#" class="donate-btn" onclick="localStorage.removeItem('isLoggedIn'); localStorage.removeItem('currentUser'); window.location.href='index.html'; return false;">Log Out</a>
+        `;
+    } else {
+        // Show Login and Donate for non-logged-in users
+        navbarAuth.innerHTML = `
+            <a href="login.html" class="navbar-link">Login</a>
+            <a href="contact.html" class="donate-btn">Donate</a>
+        `;
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const status = document.getElementById('loginStatus');
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Find user with matching email
+            const user = users.find(u => u.email === email);
+            
+            if (!user) {
+                status.textContent = 'Email not found. Please register first.';
+                status.className = 'form-status is-error';
+                return;
+            }
+            
+            if (user.password !== password) {
+                status.textContent = 'Incorrect password.';
+                status.className = 'form-status is-error';
+                return;
+            }
+
             status.textContent = 'Logging in...';
             status.className = 'form-status is-success';
 
+            // Save login state and current user info
             localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('currentUser', JSON.stringify({
+                fullName: user.fullName,
+                email: user.email
+            }));
 
             // TODO: replace with real fetch('/api/login', { method: 'POST', body: new FormData(loginForm) })
             // once backend auth is ready.
@@ -22,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
         registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const status = document.getElementById('registerStatus');
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
             const pw = document.getElementById('password').value;
             const confirmPw = document.getElementById('confirmPassword').value;
 
@@ -31,10 +114,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Get existing users from localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Check if email already exists
+            if (users.some(u => u.email === email)) {
+                status.textContent = 'This email is already registered.';
+                status.className = 'form-status is-error';
+                return;
+            }
+
+            // Add new user
+            users.push({
+                fullName: fullName,
+                email: email,
+                password: pw
+            });
+
+            // Save users to localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+
             status.textContent = 'Creating your account...';
             status.className = 'form-status is-success';
 
             localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('currentUser', JSON.stringify({
+                fullName: fullName,
+                email: email
+            }));
 
             // TODO: replace with real fetch('/api/register', { method: 'POST', body: new FormData(registerForm) })
             setTimeout(() => {
@@ -114,7 +221,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// ---------- Green Challenge entry form (gated: must be logged in) ----------
+// ---------- Populate member name on dashboard ----------
+document.addEventListener('DOMContentLoaded', () => {
+    const memberNameEl = document.getElementById('memberName');
+    if (!memberNameEl) return; // not on dashboard page
+
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+        const user = JSON.parse(currentUser);
+        memberNameEl.textContent = user.fullName;
+    }
+});
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('competitionForm');
     if (!form) return; // not on the competition page
