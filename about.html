@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <script defer src="assets/js/navigation.js"></script>
-    <script defer src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/navbar-init.js"></script>
 </head>
 
 <body>
@@ -24,12 +24,16 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a class="active" href="about.html">About</a></li>
-                <li><a href="programmes.html">Programmes</a></li>
+                <li><a href="programmes.html">Programmes &amp; Events</a></li>
+                <li><a href="competition.html">Green Challenge</a></li>
                 <li><a href="news.html">News</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
 
-            <a href="contact.html" class="donate-btn">Join Us</a>
+            <div class="navbar-auth">
+                <a href="login.html" class="navbar-link">Login</a>
+                <a href="contact.html" class="donate-btn">Donate</a>
+            </div>
 
             <button class="hamburger" aria-label="Toggle navigation">
                 &#9776;
@@ -95,7 +99,9 @@
 
             <div class="mv-row">
     <div class="project-card mv-card">
-        <div class="mv-icon">...</div>
+        <div class="mv-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M20.8 3.2C12.3 3.1 6.6 5.4 4.3 9.8c-1.5 2.9-1 6.2.7 8.4 2-3.5 5.1-6.4 9.4-8.4-3.1 2.4-5.5 5.1-7.2 8.3 2.1 1.4 5 1.7 7.6.4 4.5-2.2 6.5-7.6 6.3-15.3Z"/></svg>
+        </div>
         <div class="project-card-body">
             <h3>Our Mission</h3>
             <p>To inspire and empower communities to protect the environment through 
@@ -107,7 +113,9 @@
     </div>
 
               <div class="project-card mv-card">
-        <div class="mv-icon mv-icon-vision">...</div>
+        <div class="mv-icon mv-icon-vision" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 5C6.5 5 2.1 9.1.8 12c1.3 2.9 5.7 7 11.2 7s9.9-4.1 11.2-7C21.9 9.1 17.5 5 12 5Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-2.2a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z"/></svg>
+        </div>
         <div class="project-card-body">
             <h3>Our Vision</h3>
             <p>To create a cleaner, greener, and more sustainable South Africa where every 
@@ -139,7 +147,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="programmes.html">Programmes &amp; Events</a></li>
                     <li><a href="news.html">News</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>

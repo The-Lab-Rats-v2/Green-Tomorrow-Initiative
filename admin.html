@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Green Tomorrow Initiative</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <script type="module" src="assets/js/supabase.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/api.js"></script>
+    <script type="module" src="assets/js/admin.js"></script>
+    <script type="module" src="assets/js/admin-init.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                <span class="logo-mark" aria-hidden="true"></span>
+                Green Tomorrow
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programmes.html">Programmes &amp; Events</a></li>
+                <li><a href="competition.html">Green Challenge</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="navbar-auth">
+                <a href="#" class="donate-btn" onclick="handleLogout(event)">Log Out</a>
+            </div>
+
+            <button class="hamburger" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="dash-header admin-header">
+            <div>
+                <span class="eyebrow">Administration</span>
+                <h1>Make every action count.</h1>
+                <p>Your command centre for community events, people, and impact.</p>
+            </div>
+        </section>
+
+        <!-- Admin Navigation Tabs -->
+        <section class="admin-shell">
+            <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+                    <button data-tab="statistics" class="admin-tab active" role="tab">
+                        Statistics
+                    </button>
+                    <button data-tab="challenges" class="admin-tab" role="tab">
+                        Challenges
+                    </button>
+                    <button data-tab="events" class="admin-tab" role="tab">
+                        Events
+                    </button>
+                    <button data-tab="volunteers" class="admin-tab" role="tab">
+                        Volunteers
+                    </button>
+                    <button data-tab="donations" class="admin-tab" role="tab">
+                        Donations
+                    </button>
+                    <button data-tab="news" class="admin-tab" role="tab">
+                        News
+                    </button>
+            </div>
+        </section>
+
+        <!-- Admin Content Area -->
+        <section class="admin-shell admin-content-section">
+            <div id="admin-content" class="admin-content">
+                <p class="admin-loading">Loading dashboard...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+                <h3>Green Tomorrow Initiative</h3>
+                <p>
+                    Building greener communities through sustainability,
+                    education and environmental action.
+                </p>
+            </div>
+
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programmes.html">Programmes &amp; Events</a></li>
+                    <li><a href="competition.html">Green Challenge</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contact</h4>
+                <p>info@greentomorrow.org</p>
+                <p>Cape Town, South Africa</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 Green Tomorrow Initiative. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+    <script>
+        window.handleLogout = async (e) => {
+            e.preventDefault();
+            try {
+                const { logoutUser } = await import('./assets/js/auth.js');
+                await logoutUser();
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Logout error:', error);
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+
+</body>
+
+</html>

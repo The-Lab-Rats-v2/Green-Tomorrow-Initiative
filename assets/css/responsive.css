@@ -50,7 +50,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1060px) {
     .navbar {
         flex-wrap: wrap;
         padding: 14px 18px;
@@ -78,7 +78,6 @@
     }
 
     .donate-btn {
-        margin-left: auto;
         min-height: 42px;
         padding: 10px 15px;
     }
@@ -146,8 +145,21 @@
         font-size: 1rem;
     }
 
-    .donate-btn {
+    .navbar-auth {
+        gap: 6px;
+    }
+
+    .logout-link {
         display: none;
+    }
+
+    .profile-link {
+        padding: 4px;
+    }
+
+    .donate-btn {
+        display: inline-flex;
+        padding: 10px 13px;
     }
 
     .hero-media img,

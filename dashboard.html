@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Dashboard | Green Tomorrow Initiative</title>
+    <title>My Profile | Green Tomorrow Initiative</title>
 
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
 
     <script defer src="assets/js/navigation.js"></script>
-    <script defer src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/supabase.js"></script>
+    <script type="module" src="assets/js/auth.js"></script>
+    <script type="module" src="assets/js/api.js"></script>
+    <script type="module" src="assets/js/dashboard.js"></script>
+    <script type="module" src="assets/js/navbar-init.js"></script>
+    <script type="module" src="assets/js/dashboard-init.js"></script>
 </head>
 
 <body>
@@ -27,13 +32,15 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="programmes.html">Programmes</a></li>
+                <li><a href="programmes.html">Programmes &amp; Events</a></li>
                 <li><a href="competition.html">Green Challenge</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
 
             <div class="navbar-auth">
-                <a href="#" class="donate-btn" onclick="localStorage.removeItem('isLoggedIn'); window.location.href='index.html';">Log Out</a>
+                <a href="login.html" class="navbar-link">Login</a>
+                <a href="contact.html" class="donate-btn">Donate</a>
             </div>
 
             <button class="hamburger" aria-label="Toggle navigation">
@@ -46,24 +53,21 @@
     <main>
 
         <section class="dash-header">
-            <div>
-                <span class="eyebrow">Member Dashboard</span>
-                <!-- TODO: backend replaces "there" with the logged-in user's real name -->
-                <h1>Welcome back, <span id="memberName">there</span></h1>
+            <div class="profile-heading">
+                <div class="profile-heading-avatar" id="profileInitials" aria-hidden="true"></div>
+                <div>
+                <span class="eyebrow">Member Profile</span>
+                <h1>Welcome back, <span id="memberName"></span></h1>
                 <p>Here's your account with Green Tomorrow Initiative.</p>
+                </div>
             </div>
         </section>
 
         <!-- My Green Challenge entry -->
-        <section class="about-preview">
-            <div class="section-copy" style="max-width: 100%; grid-column: 1 / -1;">
+        <section class="about-preview dashboard-form-section">
+            <div class="section-copy">
                 <span class="eyebrow">Green Challenge</span>
                 <h2>Your team entry</h2>
-
-                <!-- TODO: backend replaces this with the member's real submission,
-                     pulled by matching the logged-in user to a competition_entries record.
-                     Shown below is the "not entered yet" state, since no real
-                     submission data exists until the backend is connected. -->
                 <div class="entry-status-card">
                     <p>You haven't entered the Green Challenge yet.</p>
                     <a href="competition.html" class="btn">Enter Now</a>
@@ -72,21 +76,22 @@
         </section>
 
         <section class="featured-projects">
-            <div class="section-heading" style="text-align:left; margin:0;">
+            <div class="section-heading">
                 <span class="eyebrow">My Events</span>
                 <h2>Events you've joined</h2>
             </div>
 
             <div class="project-container" id="myEventsList"></div>
 
-            <p id="noEventsMessage" style="display:none; color: var(--muted); margin-top: 1rem;">
-                You haven't joined any events yet. <a href="programmes.html" style="color: var(--leaf); font-weight: 650;">Browse events &rarr;</a>
+            <p id="noEventsMessage" style="display:none; color: var(--muted); margin-top: 1rem; text-align: center;">
+                You haven't joined any events yet. <a href="programmes.html"
+                    style="color: var(--leaf); font-weight: 650;">Browse events &rarr;</a>
             </p>
         </section>
 
         <!-- Quick links -->
         <section class="featured-projects">
-            <div class="section-heading" style="text-align:left; margin:0;">
+            <div class="section-heading">
                 <span class="eyebrow">Explore</span>
                 <h2>Get involved</h2>
             </div>
@@ -95,9 +100,9 @@
 
                 <div class="project-card">
                     <div class="project-card-body">
-                        <h3>Programmes</h3>
-                        <p>Browse our current sustainability programmes and initiatives.</p>
-                        <a href="programmes.html" class="btn btn-secondary">View Programmes</a>
+                        <h3>Programmes &amp; Events</h3>
+                        <p>Browse our current sustainability programmes, initiatives, and events.</p>
+                        <a href="programmes.html" class="btn btn-secondary">View Programmes &amp; Events</a>
                     </div>
                 </div>
 
@@ -139,7 +144,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="programmes.html">Programmes</a></li>
+                    <li><a href="programmes.html">Programmes &amp; Events</a></li>
                     <li><a href="competition.html">Green Challenge</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
