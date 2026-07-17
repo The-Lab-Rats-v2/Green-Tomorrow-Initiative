@@ -401,7 +401,6 @@ if (!authenticated) {
 | `sql-rls-policies.sql` | Security policies | SQL |
 | `sql-storage-setup.sql` | File storage config | SQL |
 | `admin.html` | Admin dashboard page | HTML |
-| `SUPABASE_MIGRATION_GUIDE.md` | Detailed setup guide | Doc |
 | `ARCHITECTURE.md` | Technical documentation | Doc |
 
 ---
@@ -420,10 +419,8 @@ if (!authenticated) {
 
 If you need to revert to localStorage:
 
-1. Keep `script.js` backup with old localStorage logic
-2. In HTML files, comment out Supabase modules
-3. Uncomment old script imports
-4. Restart browser
+1. Revert the relevant commit with Git.
+2. Restore the previous deployment from GitHub Pages if needed.
 
 Or use git to revert commits:
 ```bash

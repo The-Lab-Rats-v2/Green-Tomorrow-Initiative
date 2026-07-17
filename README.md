@@ -21,9 +21,7 @@ green-tomorrow-initiative/
 |   |   |-- responsive.css
 |   |   `-- style.css
 |   |-- js/
-|   |   |-- contact.js
-|   |   |-- navigation.js
-|   |   `-- script.js
+|   |   `-- navigation.js
 |   `-- favicon.svg
 |-- about.html
 |-- contact.html

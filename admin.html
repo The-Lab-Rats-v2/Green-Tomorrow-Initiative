@@ -9,12 +9,11 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
 
-    <script type="module" src="assets/js/supabase.js"></script>
-    <script type="module" src="assets/js/auth.js"></script>
-    <script type="module" src="assets/js/api.js"></script>
-    <script type="module" src="assets/js/admin.js"></script>
+    <script defer src="assets/js/navigation.js"></script>
     <script type="module" src="assets/js/admin-init.js"></script>
+    <script type="module" src="assets/js/navbar-init.js"></script>
 </head>
 
 <body>
@@ -37,7 +36,8 @@
             </ul>
 
             <div class="navbar-auth">
-                <a href="#" class="donate-btn" onclick="handleLogout(event)">Log Out</a>
+                <a href="login.html" class="navbar-link">Login</a>
+                <a href="#" class="donate-btn">Donate</a>
             </div>
 
             <button class="hamburger" aria-label="Toggle navigation">
@@ -127,20 +127,7 @@
 
     </footer>
 
-    <script>
-        window.handleLogout = async (e) => {
-            e.preventDefault();
-            try {
-                const { logoutUser } = await import('./assets/js/auth.js');
-                await logoutUser();
-                window.location.href = 'index.html';
-            } catch (error) {
-                console.error('Logout error:', error);
-                window.location.href = 'index.html';
-            }
-        };
-    </script>
-
+    <script type="module" src="assets/js/chatbot.js"></script>
 </body>
 
 </html>

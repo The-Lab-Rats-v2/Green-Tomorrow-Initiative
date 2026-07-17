@@ -1279,7 +1279,14 @@ footer {
     display: inline-flex;
     align-items: center;
     flex: 0 0 auto;
-    gap: 8px;
+    gap: 12px;
+}
+
+.nav-auth-divider {
+    width: 1px;
+    height: 24px;
+    margin: 0 2px;
+    background: var(--line);
 }
 
 .profile-link {
@@ -1348,6 +1355,10 @@ footer {
 }
 
 .admin-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 0 4px;
     color: var(--leaf);
     font-weight: 800;
 }
@@ -1372,13 +1383,6 @@ footer {
 .admin-form-card { max-width: 700px; margin: 30px auto 0; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: #fbfdf9; }.admin-form-card h3 { margin-bottom: 20px; }.form-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
 .admin-notice { margin: 0 0 22px; padding: 13px 16px; border: 1px solid #a7d5af; border-radius: 12px; background: var(--mint); color: var(--forest); font-weight: 700; }.admin-notice.is-error { border-color: #f2b5b5; background: #fff1f1; color: #b91c1c; }.challenge-complete { color: var(--muted); font-size: .86rem; font-weight: 700; }
 @media (max-width: 700px) { .admin-header { padding-top: 48px; }.admin-panel-heading { flex-direction: column; }.admin-stat-grid, .event-overview, .event-admin-grid { grid-template-columns: 1fr; }.event-overview > div { border-right: 0; border-bottom: 1px solid var(--line); }.event-overview > div:last-child { border-bottom: 0; } }
-
-.event-participants {
-    min-height: 48px;
-    margin: 14px 0;
-    color: var(--muted);
-    font-size: .92rem;
-}
 
 .events-empty {
     grid-column: 1 / -1;
