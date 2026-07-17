@@ -1,13 +1,10 @@
 // =============================================
 // DASHBOARD MODULE
 // =============================================
-
-import { getCurrentUser, isAuthenticated, logoutUser } from './auth.js';
+import { getCurrentUser, isAuthenticated } from './auth.js';
 import { 
   getVolunteerRegistrations, 
-  getDonations, 
-  getChallengeEntry,
-  getEvents
+  getChallengeEntry
 } from './api.js';
 
 // =============================================
@@ -80,8 +77,6 @@ async function loadDashboardData(userProfile) {
     // Load volunteer events
     await loadVolunteerEvents(userProfile.id);
 
-    // Load donations
-    await loadDonations(userProfile.id);
   } catch (error) {
     console.error('Error loading dashboard data:', error);
   }
@@ -181,47 +176,5 @@ async function loadVolunteerEvents(userId) {
     });
   } catch (error) {
     console.error('Error loading volunteer events:', error);
-  }
-}
-
-// =============================================
-// LOAD DONATIONS
-// =============================================
-
-async function loadDonations(userId) {
-  try {
-    const donations = await getDonations(userId);
-
-    if (donations.length === 0) {
-      return;
-    }
-
-    // Optional: Add donation summary to dashboard
-    const totalDonations = donations.reduce((sum, d) => sum + parseFloat(d.amount), 0);
-    console.log(`Total donations: $${totalDonations.toFixed(2)}`);
-  } catch (error) {
-    console.error('Error loading donations:', error);
-  }
-}
-
-// =============================================
-// SETUP LOGOUT HANDLER
-// =============================================
-
-export function setupLogoutHandler() {
-  const logoutBtn = document.querySelector('a[href="#"][onclick*="localStorage.removeItem"]');
-  
-  if (logoutBtn) {
-    logoutBtn.onclick = async (e) => {
-      e.preventDefault();
-      try {
-        await logoutUser();
-        window.location.href = 'index.html';
-      } catch (error) {
-        console.error('Logout error:', error);
-        // Force logout and redirect anyway
-        window.location.href = 'index.html';
-      }
-    };
   }
 }

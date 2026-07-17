@@ -22,7 +22,7 @@ export function openDonationModal(isAuthenticated) {
         <label class="donation-custom">Custom amount (R)
           <input id="customDonationAmount" type="number" min="1" step="1" placeholder="Enter amount">
         </label>
-        <button class="btn donation-confirm" type="button" disabled>Simulate payment</button>
+        <button class="btn donation-confirm" type="button" disabled>Pay</button>
         <p class="form-status" id="donationStatus"></p>` : `
         <p>Please log in or create an account to make a donation.</p>
         <a class="btn" href="login.html">Log in to donate</a>`}
@@ -54,7 +54,7 @@ export function openDonationModal(isAuthenticated) {
   custom.addEventListener('input', () => selectAmount(custom.value));
   confirmButton.addEventListener('click', async () => {
     confirmButton.disabled = true;
-    status.textContent = 'Processing simulated payment…';
+    status.textContent = 'Processing payment…';
     status.className = 'form-status is-success';
     try {
       await createDonation(selectedAmount, `SIM-${Date.now()}`);

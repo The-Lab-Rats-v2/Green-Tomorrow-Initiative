@@ -134,7 +134,6 @@ Logout:
   - Challenge entry status
   - Volunteer events
   - Donation history
-- `setupLogoutHandler()` - Setup logout button
 
 **Flow**:
 ```

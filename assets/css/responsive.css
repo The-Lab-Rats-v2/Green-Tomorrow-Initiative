@@ -146,7 +146,7 @@
     }
 
     .navbar-auth {
-        gap: 6px;
+        gap: 8px;
     }
 
     .logout-link {
@@ -155,6 +155,11 @@
 
     .profile-link {
         padding: 4px;
+    }
+
+    .nav-auth-divider,
+    .admin-link {
+        display: none;
     }
 
     .donate-btn {

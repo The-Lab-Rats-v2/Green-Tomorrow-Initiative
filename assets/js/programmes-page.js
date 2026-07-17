@@ -23,8 +23,6 @@ async function renderEvents() {
   }
 
   const cards = await Promise.all(events.map(async (event) => {
-    // The event itself is public. A missing/old attendee-count RPC must not
-    // prevent people from seeing or joining public events.
     let participantCount = 0;
     try {
       participantCount = await getEventParticipantCount(event.id);
@@ -39,7 +37,6 @@ async function renderEvents() {
           <span class="programme-tag">Community event</span>
           <h3>${escapeHtml(event.title)}</h3>
           <p>${formatDate(event.date)} &middot; ${escapeHtml(event.location)} &middot; ${spacesLeft} spots left</p>
-          <p class="event-participants"><strong>${participantCount}</strong> ${participantCount === 1 ? 'person has' : 'people have'} joined this event.</p>
           <button class="btn join-event-btn" ${joined || spacesLeft === 0 ? 'disabled' : ''}>
             ${joined ? 'Joined' : spacesLeft === 0 ? 'Event Full' : 'Join Event'}
           </button>

@@ -1,0 +1,16 @@
+{
+  "siteName": "Green Tomorrow Initiative",
+  "contact": { "email": "info@greentomorrow.org", "location": "Cape Town, South Africa" },
+  "pages": [
+    { "title": "Home", "url": "index.html", "keywords": ["home", "start"] },
+    { "title": "About", "url": "about.html", "keywords": ["about", "mission", "vision", "organisation", "organization"] },
+    { "title": "Programmes & Events", "url": "programmes.html", "keywords": ["programme", "program", "volunteer", "event", "recycling", "tree planting", "renewable"] },
+    { "title": "Green Challenge", "url": "competition.html", "keywords": ["challenge", "competition", "entry", "proposal"] },
+    { "title": "News", "url": "news.html", "keywords": ["news", "updates", "article"] },
+    { "title": "Donate", "url": "contact.html", "keywords": ["donate", "donation", "give", "support"] },
+    { "title": "Contact", "url": "contact.html", "keywords": ["contact", "email", "location", "message"] },
+    { "title": "Register", "url": "register.html", "keywords": ["register", "sign up", "signup", "account"] },
+    { "title": "Login", "url": "login.html", "keywords": ["login", "log in", "sign in"] },
+    { "title": "Dashboard", "url": "dashboard.html", "keywords": ["dashboard", "profile", "my account"] }
+  ]
+}
