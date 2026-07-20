@@ -332,44 +332,42 @@ async function loadEventsTab(contentArea) {
 
 async function loadDonationsTab(contentArea) {
   const donations = await getDonations();
-
-  let html = `
-    <h3>Donations</h3>
-    <table style="width: 100%; border-collapse: collapse;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--line);">
-          <th style="padding: 1rem; text-align: left;">Date</th>
-          <th style="padding: 1rem; text-align: left;">Amount</th>
-          <th style="padding: 1rem; text-align: left;">Status</th>
-          <th style="padding: 1rem; text-align: left;">Reference</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  donations.forEach(donation => {
-    const donationDate = new Date(donation.created_at).toLocaleDateString();
-    html += `
-      <tr style="border-bottom: 1px solid var(--line);">
-        <td style="padding: 1rem;">${donationDate}</td>
-        <td style="padding: 1rem;">$${parseFloat(donation.amount).toFixed(2)}</td>
-        <td style="padding: 1rem;">
-          <span class="status-pill status-${donation.status}">${donation.status.charAt(0).toUpperCase() + donation.status.slice(1)}</span>
-        </td>
-        <td style="padding: 1rem;">${donation.payment_reference || 'N/A'}</td>
-      </tr>
-    `;
-  });
-
   const totalDonations = donations.reduce((sum, d) => sum + parseFloat(d.amount), 0);
 
-  html += `
-      </tbody>
-    </table>
-    <p style="margin-top: 1rem; font-weight: bold;">Total Donations: $${totalDonations.toFixed(2)}</p>
-  `;
+  const rows = donations.map((donation) => {
+    const donationDate = new Date(donation.created_at).toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' });
+    const ref = donation.payment_reference || '';
+    const method = ref.includes('paypal') ? 'PayPal' : ref.includes('card') ? 'Card' : '—';
+    return `<tr data-search="${ref.toLowerCase()}">
+      <td>${donationDate}</td>
+      <td class="col-amount">R${parseFloat(donation.amount).toFixed(2)}</td>
+      <td><span class="status-pill status-${donation.status}">${donation.status.charAt(0).toUpperCase() + donation.status.slice(1)}</span></td>
+      <td class="col-muted">${method}</td>
+      <td class="col-muted">${ref || 'N/A'}</td>
+    </tr>`;
+  }).join('');
 
-  contentArea.innerHTML = html;
+  contentArea.innerHTML = `<div class="admin-panel-heading"><div><span class="eyebrow">Fundraising</span><h2>Donations</h2><p>Track every contribution and its payment method.</p></div></div>
+    <div class="admin-toolbar">
+      <div class="admin-search"><input type="search" id="donationSearch" placeholder="Search by reference…" aria-label="Search donations"></div>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Date</th><th>Amount</th><th>Status</th><th>Method</th><th>Reference</th></tr></thead>
+        <tbody id="donationBody">${rows || '<tr class="admin-empty-row"><td colspan="5">No donations yet.</td></tr>'}</tbody>
+      </table>
+    </div>
+    <p class="admin-total"><small>Total raised</small> R${totalDonations.toFixed(2)}</p>`;
+
+  const search = document.getElementById('donationSearch');
+  if (search) {
+    search.addEventListener('input', () => {
+      const term = search.value.trim().toLowerCase();
+      contentArea.querySelectorAll('#donationBody tr').forEach((row) => {
+        row.style.display = !term || row.dataset.search.includes(term) ? '' : 'none';
+      });
+    });
+  }
 }
 
 // =============================================
@@ -379,41 +377,37 @@ async function loadDonationsTab(contentArea) {
 async function loadVolunteersTab(contentArea) {
   const registrations = await getVolunteerRegistrations();
 
-  let html = `
-    <h3>Volunteer Registrations</h3>
-    <table style="width: 100%; border-collapse: collapse;">
-      <thead>
-        <tr style="border-bottom: 2px solid var(--line);">
-          <th style="padding: 1rem; text-align: left;">Volunteer</th>
-          <th style="padding: 1rem; text-align: left;">Event</th>
-          <th style="padding: 1rem; text-align: left;">Date</th>
-          <th style="padding: 1rem; text-align: left;">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  registrations.forEach(reg => {
-    const eventDate = new Date(reg.event.date).toLocaleDateString();
+  const rows = registrations.map((reg) => {
+    const eventDate = new Date(reg.event.date).toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' });
     const volunteerName = reg.user?.full_name || 'Unknown';
-    html += `
-      <tr style="border-bottom: 1px solid var(--line);">
-        <td style="padding: 1rem;">${volunteerName}</td>
-        <td style="padding: 1rem;">${reg.event.title}</td>
-        <td style="padding: 1rem;">${eventDate}</td>
-        <td style="padding: 1rem;">
-          <span class="status-pill status-${reg.status}">${reg.status.charAt(0).toUpperCase() + reg.status.slice(1)}</span>
-        </td>
-      </tr>
-    `;
-  });
+    return `<tr data-search="${volunteerName.toLowerCase()} ${reg.event.title.toLowerCase()}">
+      <td>${volunteerName}</td>
+      <td>${reg.event.title}</td>
+      <td class="col-muted">${eventDate}</td>
+      <td><span class="status-pill status-${reg.status}">${reg.status.charAt(0).toUpperCase() + reg.status.slice(1)}</span></td>
+    </tr>`;
+  }).join('');
 
-  html += `
-      </tbody>
-    </table>
-  `;
+  contentArea.innerHTML = `<div class="admin-panel-heading"><div><span class="eyebrow">People</span><h2>Volunteer Registrations</h2><p>Everyone signed up for your events.</p></div></div>
+    <div class="admin-toolbar">
+      <div class="admin-search"><input type="search" id="volunteerSearch" placeholder="Search by name or event…" aria-label="Search volunteers"></div>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Volunteer</th><th>Event</th><th>Date</th><th>Status</th></tr></thead>
+        <tbody id="volunteerBody">${rows || '<tr class="admin-empty-row"><td colspan="4">No volunteer registrations yet.</td></tr>'}</tbody>
+      </table>
+    </div>`;
 
-  contentArea.innerHTML = html;
+  const search = document.getElementById('volunteerSearch');
+  if (search) {
+    search.addEventListener('input', () => {
+      const term = search.value.trim().toLowerCase();
+      contentArea.querySelectorAll('#volunteerBody tr').forEach((row) => {
+        row.style.display = !term || row.dataset.search.includes(term) ? '' : 'none';
+      });
+    });
+  }
 }
 
 // =============================================
@@ -423,28 +417,25 @@ async function loadVolunteersTab(contentArea) {
 async function loadNewsTab(contentArea) {
   const newsArticles = await getNews(50);
 
-  let html = `
-    <h3>News</h3>
-    <button onclick="showAddNewsForm()" class="btn" style="margin-bottom: 1rem;">+ Add News</button>
-    <div id="news-articles">
-  `;
+  const cards = newsArticles.map((article) => {
+    const publishDate = new Date(article.published_at).toLocaleDateString('en-ZA', { day: 'numeric', month: 'short', year: 'numeric' });
+    const snippet = (article.content || '').substring(0, 140);
+    return `<article class="admin-news-card" data-search="${article.title.toLowerCase()}">
+      <h4>${article.title}</h4>
+      <span class="news-meta">Published ${publishDate}</span>
+      <p class="news-snip">${snippet}${article.content && article.content.length > 140 ? '…' : ''}</p>
+      <div class="news-actions"><button onclick="deleteNewsClick('${article.id}')" class="btn btn-secondary" style="padding:.5rem 1rem;font-size:.85rem;">Delete</button></div>
+    </article>`;
+  }).join('');
 
-  newsArticles.forEach(article => {
-    const publishDate = new Date(article.published_at).toLocaleDateString();
-    html += `
-      <div style="padding: 1rem; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 1rem;">
-        <h4>${article.title}</h4>
-        <p style="color: var(--muted); font-size: 0.9rem;">Published: ${publishDate}</p>
-        <p>${article.content.substring(0, 100)}...</p>
-        <button onclick="deleteNewsClick('${article.id}')" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">Delete</button>
-      </div>
-    `;
-  });
-
-  html += `
+  contentArea.innerHTML = `<div class="admin-panel-heading"><div><span class="eyebrow">Content</span><h2>News</h2><p>Publish updates and stories from the field.</p></div>
+      <button onclick="showAddNewsForm()" class="btn">+ Add News</button></div>
+    <div class="admin-toolbar">
+      <div class="admin-search"><input type="search" id="newsSearch" placeholder="Search articles…" aria-label="Search news"></div>
     </div>
-    <div id="news-form" style="display: none; margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: 12px;">
-      <h4>Add News Article</h4>
+    <div id="news-articles" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">${cards || '<p class="admin-empty">No articles yet. Click “Add News” to publish your first story.</p>'}</div>
+    <div id="news-form" class="admin-form-card" hidden>
+      <h3>Add News Article</h3>
       <form id="addNewsForm">
         <div class="form-group">
           <label>Title</label>
@@ -461,10 +452,17 @@ async function loadNewsTab(contentArea) {
         <button type="submit" class="btn">Publish</button>
         <button type="button" onclick="cancelNewsForm()" class="btn btn-secondary" style="margin-left: 0.5rem;">Cancel</button>
       </form>
-    </div>
-  `;
+    </div>`;
 
-  contentArea.innerHTML = html;
+  const search = document.getElementById('newsSearch');
+  if (search) {
+    search.addEventListener('input', () => {
+      const term = search.value.trim().toLowerCase();
+      contentArea.querySelectorAll('#news-articles .admin-news-card').forEach((card) => {
+        card.style.display = !term || card.dataset.search.includes(term) ? '' : 'none';
+      });
+    });
+  }
 }
 
 // =============================================
@@ -546,10 +544,11 @@ window.deleteNewsClick = async (articleId) => {
 
 window.showAddNewsForm = () => {
   const form = document.getElementById('news-form');
-  if (form) form.style.display = 'block';
+  if (form) form.hidden = false;
+  form?.scrollIntoView({ behavior: 'smooth', block: 'center' });
 };
 
 window.cancelNewsForm = () => {
   const form = document.getElementById('news-form');
-  if (form) form.style.display = 'none';
+  if (form) form.hidden = true;
 };
